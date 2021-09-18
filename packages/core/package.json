@@ -1,6 +1,6 @@
 {
   "name": "@leex-cli-dev/core",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "leex-cli-dev core",
   "author": "lixiang16 <lixiang16@corp.netease.com>",
   "homepage": "",
@@ -23,6 +23,6 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@leex-cli-dev/utils": "^1.0.2"
+    "@leex-cli-dev/utils": "^1.0.3"
   }
 }
