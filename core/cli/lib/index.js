@@ -7,7 +7,7 @@ module.exports = core;
 // .json -> JSON.parse
 // .node -> c++ JS addon
 // 其他也可以 .txt 通过js引擎来执行 只要文件里面的代码可以用js引擎解析
-const patth = require("path");
+const path = require("path");
 const semver = require("semver");
 const colors = require("colors/safe");
 const userHome = require("user-home");
@@ -18,7 +18,6 @@ const constant = require("./const");
 const pkg = require("../package.json");
 
 let args;
-let config;
 
 function core(argv) {
   try {
@@ -34,19 +33,29 @@ function core(argv) {
   }
 }
 
+// 检查环境变量
 function checkEnv() {
   const dotenv = require("dotenv");
-  const dotenvPath = patth.resolve(userHome, ".env");
+  const dotenvPath = path.resolve(userHome, ".env");
   if (pathExists(dotenvPath)) {
     const env = dotenv.config({ path: dotenvPath });
     console.log(env);
   }
+  createDefaultConfig();
+  log.verbose("环境变量", process.env.CLI_HOME_PATH);
 }
 
 function createDefaultConfig() {
-  const cliConfig = {}
+  const cliConfig = { home: userHome };
+  if (process.env.CLI_HOME) {
+    cliConfig["cliHome"] = path.join(userHome, process.env.CLI_HOME);
+  } else {
+    cliConfig["cliHome"] = path.join(userHome, constant.DEFAULT_CLI_HOME);
+  }
+  process.env.CLI_HOME_PATH = cliConfig.cliHome;
 }
 
+// 检查输入参数
 function checkInputArgs() {
   const minimist = require("minimist");
   args = minimist(process.argv.slice(2));
@@ -62,6 +71,7 @@ function checkArgs() {
   log.level = process.env.LOG_LEVEL;
 }
 
+// 检查主目录
 function checkUserHome() {
   console.log(userHome);
   if (!userHome || !pathExists(userHome)) {

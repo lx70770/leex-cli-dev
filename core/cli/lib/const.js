@@ -3,4 +3,5 @@ const DEFAULT_CLI_HOME = '.leex-cli'
 
 module.exports = {
   LOWEST_NODE_VERIOSN,
+  DEFAULT_CLI_HOME
 };
