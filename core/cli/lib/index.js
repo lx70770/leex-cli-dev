@@ -19,7 +19,7 @@ const pkg = require("../package.json");
 
 let args;
 
-function core(argv) {
+async function core(argv) {
   try {
     console.log("exec core:", argv);
     checkPkgVersion();
@@ -28,8 +28,19 @@ function core(argv) {
     checkUserHome();
     checkInputArgs();
     checkEnv();
+    await checkGlobalUpdate();
   } catch (e) {
     log.error(e.message);
+  }
+}
+
+async function checkGlobalUpdate() {
+  const currentVersion = pkg.version;
+  const npmName = pkg.name;
+  const { getNpmSemversion } = require("@leex-cli-dev/get-npm-info");
+  const lastVersion = await getNpmSemversion(currentVersion, npmName);
+  if (lastVersion && semver.gt(lastVersion, currentVersion)) {
+    log.warn(colors.yellow(`请更新 ${npmName}, 更新命令: npm install -g ${npmName}`));
   }
 }
 
