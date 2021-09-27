@@ -1,8 +1,5 @@
 "use strict";
 
-module.exports = utils;
+const isObject = (o) => Object.prototype.toString.call(o) === "[object Object]";
 
-function utils() {
-  // TODO
-  console.log("utils");
-}
+module.exports = { isObject };

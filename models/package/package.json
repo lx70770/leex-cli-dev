@@ -1,0 +1,35 @@
+{
+  "name": "@leex-cli-dev/package",
+  "version": "1.0.3",
+  "description": "@leex-cli-dev npm package",
+  "author": "lixiang16 <lixiang16@corp.netease.com>",
+  "homepage": "https://github.com/lx70770/leex-cli-dev#readme",
+  "license": "ISC",
+  "main": "lib/index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lx70770/leex-cli-dev.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/lx70770/leex-cli-dev/issues"
+  },
+  "dependencies": {
+    "@leex-cli-dev/format-path": "file:../../utils/format-path",
+    "@leex-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
+    "@leex-cli-dev/utils": "file:../../utils/utils",
+    "fs-extra": "^10.0.0",
+    "npminstall": "^4.11.0",
+    "path-exists": "^4.0.0",
+    "pkg-dir": "^5.0.0"
+  }
+}

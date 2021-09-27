@@ -23,12 +23,14 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@leex-cli-dev/log": "file: ../../utils/log",
-    "@leex-cli-dev/get-npm-info": "file: ../../utils/get-npm-info",
+    "@leex-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
+    "@leex-cli-dev/init": "file:../../commands/init",
+    "@leex-cli-dev/log": "file:../../utils/log",
+    "@leex-cli-dev/exec": "file:../../core/exec",
     "colors": "^1.4.0",
+    "commander": "^6.1.0",
     "dotenv": "^10.0.0",
     "import-local": "^3.0.2",
-    "minimist": "1.2.5",
     "npmlog": "^5.0.1",
     "path-exists": "4.0.0",
     "root-check": "1.0.0",
